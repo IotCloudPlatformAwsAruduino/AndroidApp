@@ -1,6 +1,8 @@
 package com.example.android_resapi.ui.apicall;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothClass;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,11 +15,16 @@ import java.util.Map;
 
 import com.example.android_resapi.R;
 import com.example.android_resapi.httpconnection.GetRequest;
+import com.example.android_resapi.ui.DeviceActivity;
+import com.example.android_resapi.ui.dto.DataDto;
+import com.example.android_resapi.ui.service.DataService;
 
 public class GetThingShadow extends GetRequest {
     final static String TAG = "AndroidAPITest";
     String urlStr;
-    public GetThingShadow(Activity activity, String urlStr) {
+    DataDto dataDto;
+    DataService dataService;
+    public GetThingShadow(Activity activity, String urlStr) { // activity == DeviceActivity
         super(activity);
         this.urlStr = urlStr;
     }
@@ -42,13 +49,30 @@ public class GetThingShadow extends GetRequest {
         Map<String, String> state = getStateFromJSONString(jsonString);
         TextView reported_ledTV = activity.findViewById(R.id.reported_led);
         TextView reported_tempTV = activity.findViewById(R.id.reported_temp);
-        reported_tempTV.setText(state.get("reported_temperature"));
+        reported_tempTV.setText(state.get("reported_temperature")); // 온도 넣기
         reported_ledTV.setText(state.get("reported_LED"));
+
+
+        int temperature = Integer.parseInt(state.get("reported_temperature"));
+        int humid = Integer.parseInt(state.get("reported_LED"));
+
+
+//        if(temperature > 0 && humid > 0 ){
+//            dataDto = new DataDto(temperature,humid);
+//            dataService = new DataService(dataDto);
+//
+//        }
 
         TextView desired_ledTV = activity.findViewById(R.id.desired_led);
         TextView desired_tempTV = activity.findViewById(R.id.desired_temp);
         desired_tempTV.setText(state.get("desired_temperature"));
         desired_ledTV.setText(state.get("desired_LED"));
+
+        Intent intent = new Intent(activity, DeviceActivity.class );
+        intent.putExtra("temperature", temperature);
+        intent.putExtra("humid", humid);
+
+        activity.startActivity(intent);
 
     }
 
