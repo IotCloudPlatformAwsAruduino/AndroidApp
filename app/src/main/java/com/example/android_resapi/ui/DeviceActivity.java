@@ -50,26 +50,35 @@ public class DeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
-
+/*
         lineChart = (LineChart)findViewById(R.id.chart_temp); // 차트 시각화
         lineChart2 = (LineChart)findViewById(R.id.chart_humid); // 차트 시각화
 
         List<Entry> temperatures = new ArrayList<>();
         List<Entry> humids = new ArrayList<>();
 
-        temperatures.add(new Entry(1, 1));
-        temperatures.add(new Entry(2, 2));
-        temperatures.add(new Entry(3, 3));
-        temperatures.add(new Entry(4, 4));
-        temperatures.add(new Entry(5, 5));
+
+        TextView temperatureTextview= findViewById(R.id.desired_temp);
+        int temperature = 0;
+        if(temperatureTextview.getText().toString().equals("")) {
+             temperature = 4;
+        }else
+             temperature = 10;
+//        int humid = Integer.parseInt(findViewById(R.id.desired_temp).toString());
+
+        temperatures.add(new Entry(1, temperature));
+        temperatures.add(new Entry(2, temperature));
+        temperatures.add(new Entry(3, temperature));
+        temperatures.add(new Entry(4, temperature));
+        temperatures.add(new Entry(5, temperature));
 
 
-        humids.add(new Entry(1,4));
-        humids.add(new Entry(2,3));
-        humids.add(new Entry(3,2));
-        humids.add(new Entry(4,1));
-        humids.add(new Entry(5,6));
-        humids.add(new Entry(6,0));
+        humids.add(new Entry(1,temperature));
+        humids.add(new Entry(2,temperature));
+        humids.add(new Entry(3,temperature));
+        humids.add(new Entry(4,temperature));
+        humids.add(new Entry(5,temperature));
+        humids.add(new Entry(6,temperature));
 
 
         LineDataSet lineDataSet = new LineDataSet(temperatures, "temperature");
@@ -150,6 +159,8 @@ public class DeviceActivity extends AppCompatActivity {
         lineChart2.setDescription(description);
         lineChart2.animateY(2000, Easing.EasingOption.EaseInCubic);
         lineChart2.invalidate();
+
+        */
         //----------------------------------------
 
         Intent intent = getIntent();
