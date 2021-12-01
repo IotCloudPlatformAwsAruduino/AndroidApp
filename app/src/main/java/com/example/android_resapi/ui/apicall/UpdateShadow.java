@@ -5,8 +5,13 @@ import android.util.Log;
 import android.widget.Toast;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.example.android_resapi.httpconnection.PutRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UpdateShadow extends PutRequest {
     final static String TAG = "AndroidAPITest";
@@ -34,9 +39,11 @@ public class UpdateShadow extends PutRequest {
     @Override
    protected void onPostExecute(String result) {
         Toast.makeText(activity,result, Toast.LENGTH_SHORT).show();
+
     }
 
-  /*  protected Map<String, String> getStateFromJSONString(String jsonString) {
+    /*
+   protected Map<String, String> updateStateFromJSONString(String jsonString) {
         Map<String, String> output = new HashMap<>();
         try {
             // 처음 double-quote와 마지막 double-quote 제거
@@ -52,12 +59,14 @@ public class UpdateShadow extends PutRequest {
             String ledValue = desired.getString("LED");
             if (ledValue != null) output.put("LED",ledValue);
 
-        } catch (JSONException e) {
+        } catch (  JSONException e) {
             Log.e(TAG, "Exception in processing JSONString.", e);
             e.printStackTrace();
         }
         return output;
     }
-*/
+
+     */
+
 
 }

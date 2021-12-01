@@ -45,19 +45,19 @@ public class GetThings extends GetRequest {
     }
 
     @Override
-    protected void onPostExecute(String jsonString) {
+    protected void onPostExecute(String jsonString) { //서버로 부터 받은 jsonString
         TextView message = activity.findViewById(R.id.message);
         if (jsonString == null || jsonString.equals("")) {
             message.setText("디바이스 없음");
             return;
         }
         message.setText("");
-        ArrayList<Thing> arrayList = getArrayListFromJSONString(jsonString);
+        ArrayList<Thing> arrayList = getArrayListFromJSONString(jsonString); // 서버로 부터 받은 결과를 ArrayList 에 저
 
         final ArrayAdapter adapter = new ArrayAdapter(activity,
                 android.R.layout.simple_list_item_1,
                 arrayList.toArray());
-        ListView txtList = activity.findViewById(R.id.txtList);
+        ListView txtList = activity.findViewById(R.id.txtList); // 앱의 리스트뷰에 ArrayList 를 넣어서 표시해줌.
         txtList.setAdapter(adapter);
         txtList.setDividerHeight(10);
         txtList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
