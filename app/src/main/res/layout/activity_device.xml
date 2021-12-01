@@ -135,24 +135,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="변경"
-        android:id = "@+id/updateBtn"
+        android:text="ON"
+        android:id = "@+id/updateBtnOn"
         />
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/temp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/edit_temp"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:text="OFF"
+        android:id = "@+id/updateBtnOff"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

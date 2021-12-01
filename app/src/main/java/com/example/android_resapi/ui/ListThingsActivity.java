@@ -9,7 +9,7 @@ import com.example.android_resapi.ui.apicall.GetThings;
 
 
 public class ListThingsActivity extends AppCompatActivity {
-
+    // 사물들의 목록이 나열됨.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,9 +19,7 @@ public class ListThingsActivity extends AppCompatActivity {
         String url = intent.getStringExtra("listThingsURL");
 
 
-        new GetThings(ListThingsActivity.this, url).execute();
-
-
+        new GetThings(ListThingsActivity.this, url).execute(); // AsynTask 의 메소드인 execute()를 호출
     }
 }
 
