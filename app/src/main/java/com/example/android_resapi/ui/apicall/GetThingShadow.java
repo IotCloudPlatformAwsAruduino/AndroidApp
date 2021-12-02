@@ -12,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -60,7 +62,7 @@ public class GetThingShadow extends GetRequest {
 
 
     @Override
-    protected void onPreExecute() {
+    protected void onPreExecute() { //가장 먼저 호출 됨 -> 그다음 doInBackground
         try {
             super.onPreExecute();
             Log.e(TAG, urlStr);
@@ -208,20 +210,11 @@ public class GetThingShadow extends GetRequest {
 //
 //        }
 
-        TextView desired_ledTV = activity.findViewById(R.id.desired_led);
-        TextView desired_tempTV = activity.findViewById(R.id.desired_temp);
-        desired_tempTV.setText(state.get("desired_temperature"));
-        desired_ledTV.setText(state.get("desired_LED"));
 
 
     }
 
-    @Override
-    protected void onProgressUpdate(String... str){  // Main thread 에서 작동 -> 중간중간 UI 업데이트 가능해짐.
-//        reported_tempTV.setText(state.get("reported_temperature")); // 실시간 업데이트 테스
-//        reported_ledTV.setText(state.get("reported_LED"));
 
-    }
 
     protected Map<String, String> getStateFromJSONString(String jsonString) {
         Map<String, String> output = new HashMap<>();
