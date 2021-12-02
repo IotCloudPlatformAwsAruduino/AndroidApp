@@ -79,7 +79,4 @@ abstract public class GetRequest extends AsyncTask<String, String, String> {
         return output.toString(); // 스트링 버퍼에 쌓인 문자열 return -> GET 요청으로 인해 생긴 서버가 응답한 결 -> GetThings의 onPostExecute(String jsonString)으로 감.
     }
 
-
-
-
 }
