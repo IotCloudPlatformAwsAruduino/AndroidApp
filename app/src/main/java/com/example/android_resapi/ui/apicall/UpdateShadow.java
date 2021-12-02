@@ -24,7 +24,7 @@ public class UpdateShadow extends PutRequest {
     }
 
     @Override
-    protected void onPreExecute() {
+    protected void onPreExecute() {  // 여기서 AsyncTask 의 doInBackground() 를 호출함 .
         try {
             Log.e(TAG, urlStr);
             url = new URL(urlStr);

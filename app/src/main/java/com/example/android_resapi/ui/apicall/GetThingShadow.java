@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -37,7 +38,16 @@ public class GetThingShadow extends GetRequest {
     String urlStr;
     DataDto dataDto;
     DataService dataService;
+
     static int cnt = 0;
+
+    TextView reported_ledTV;
+    TextView reported_tempTV;
+    TextView reported_humid;
+    TextView reported_airCond;
+
+    Map<String, String> state;
+
     LineChart lineChart;  // 차트 시각화
     LineChart lineChart2;
 
@@ -48,9 +58,11 @@ public class GetThingShadow extends GetRequest {
     }
 
 
+
     @Override
     protected void onPreExecute() {
         try {
+            super.onPreExecute();
             Log.e(TAG, urlStr);
             url = new URL(urlStr);
 
@@ -65,11 +77,17 @@ public class GetThingShadow extends GetRequest {
     protected void onPostExecute(String jsonString) { // GetRequest의 doInBackground 로 부터 전달받은 String
         if (jsonString == null)
             return;
-        Map<String, String> state = getStateFromJSONString(jsonString);
-        TextView reported_ledTV = activity.findViewById(R.id.reported_led);
-        TextView reported_tempTV = activity.findViewById(R.id.reported_temp);
+        state = getStateFromJSONString(jsonString);
+        reported_ledTV = activity.findViewById(R.id.reported_led);
+        reported_tempTV = activity.findViewById(R.id.reported_temp);
+        reported_airCond = activity.findViewById(R.id.reported_air);
+        reported_humid = activity.findViewById(R.id.reported_humid);
+
+
         reported_tempTV.setText(state.get("reported_temperature")); // 온도 넣기
         reported_ledTV.setText(state.get("reported_LED"));
+        reported_airCond.setText(state.get("reported_air"));
+        reported_humid.setText(state.get("reported_humid"));
 
         lineChart = (LineChart) activity.findViewById(R.id.chart_temp); // 차트 시각화
         lineChart2 = (LineChart) activity.findViewById(R.id.chart_humid); // 차트 시각화
@@ -198,6 +216,13 @@ public class GetThingShadow extends GetRequest {
 
     }
 
+    @Override
+    protected void onProgressUpdate(String... str){  // Main thread 에서 작동 -> 중간중간 UI 업데이트 가능해짐.
+//        reported_tempTV.setText(state.get("reported_temperature")); // 실시간 업데이트 테스
+//        reported_ledTV.setText(state.get("reported_LED"));
+
+    }
+
     protected Map<String, String> getStateFromJSONString(String jsonString) {
         Map<String, String> output = new HashMap<>();
         try {
@@ -211,12 +236,18 @@ public class GetThingShadow extends GetRequest {
             JSONObject reported = state.getJSONObject("reported");
             String tempValue = reported.getString("temperature");
             String ledValue = reported.getString("LED");
+            String humidValue = reported.getString("humidity");
+            String airCondValue = reported.getString("airCondStatus");
+
             output.put("reported_temperature", tempValue);
             output.put("reported_LED", ledValue);
+            output.put("reported_humid",humidValue);
+            output.put("reported_air",airCondValue);
 
             JSONObject desired = state.getJSONObject("desired");
             String desired_tempValue = desired.getString("temperature");
             String desired_ledValue = desired.getString("LED");
+
             output.put("desired_temperature", desired_tempValue);
             output.put("desired_LED", desired_ledValue);
 

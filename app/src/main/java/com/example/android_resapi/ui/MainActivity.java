@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.android_resapi.R;
+import com.example.android_resapi.ui.apicall.GetThingShadow;
+import com.example.android_resapi.ui.apicall.GetThings;
 import com.github.mikephil.charting.charts.LineChart;
 
 
@@ -37,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ListThingsActivity.class);
                 intent.putExtra("listThingsURL", urlstr);//listThingsURL.getText().toString());
                 startActivity(intent);
-                //  new GetThings(MainActivity.this).execute();
-                //  new GetThingShadow(MainActivity.this, "MyMKRWiFi1010").execute();
+//                  new GetThings(MainActivity.this).execute();
+//                  new GetThingShadow(MainActivity.this, "MyMKRWiFi1010").execute();
 
             }
         });
