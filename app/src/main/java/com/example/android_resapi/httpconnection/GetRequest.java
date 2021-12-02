@@ -14,8 +14,9 @@ import javax.net.ssl.HttpsURLConnection;
 /*
 * AsyncTask는 ui 스레드와는 별도로 동작하는 스레드에서 작동하게 해줌
 * 보통 안드로이드 앱 코드를 보면 UI와 관련된 코드(액티비티에서 구현함 거의)  , network와 관련된 코드로 이루어져 있음.
-* 앱상에서 버튼을 눌려서 network operation 을 호출하고 aws iot 에 있는 플랫폼과 통신을 하게됨. (HTTP 통신) */
-abstract public class GetRequest extends AsyncTask<String, Void, String> { // AsyncTask의 역할을 알고 있어야함.
+* 앱상에서 버튼을 눌려서 network operation 을 호출하고 aws iot 에 있는 플랫폼과 통신을 하게됨. (HTTP 통신)
+* AsyncTask의 역할을 알고 있어야함. < doInBackground의 파라미터 타입 , onProgressUpdate 파라미터 타입, doInBackground의 리턴값으로 onPostExecute 파라미터 타입 >*/
+abstract public class GetRequest extends AsyncTask<String, String, String> {
     final static String TAG = "AndroidAPITest";
     protected Activity activity;
     protected URL url;
@@ -31,7 +32,7 @@ abstract public class GetRequest extends AsyncTask<String, Void, String> { // As
     *  network operation의 실행결과를 ui로 넘겨줄 때는 onPostExecute() 를 통해서 넘겨줌
     * *** AsyncTask 는 onPreExecute() , doInBackground() , onPostExecute()  이렇게 3개의 메소드를 override(재정의)해서 사용함  **** */
     @Override
-    protected String doInBackground(String... strings) {
+    protected String doInBackground(String... strings) { // 이때 network operation 하는 thread 가 생성됨.
         StringBuffer output = new StringBuffer();
 
         try {
@@ -77,5 +78,8 @@ abstract public class GetRequest extends AsyncTask<String, Void, String> { // As
 
         return output.toString(); // 스트링 버퍼에 쌓인 문자열 return -> GET 요청으로 인해 생긴 서버가 응답한 결 -> GetThings의 onPostExecute(String jsonString)으로 감.
     }
+
+
+
 
 }

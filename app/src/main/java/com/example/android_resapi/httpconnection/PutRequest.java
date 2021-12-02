@@ -27,20 +27,20 @@ public class PutRequest extends AsyncTask<JSONObject, Void, String> {
     protected String doInBackground(JSONObject... postDataParams) {
 
         try {
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // 서버와 연결 open
             conn.setReadTimeout(10000 /* milliseconds */);
             conn.setConnectTimeout(10000 /* milliseconds */);
-            conn.setRequestMethod("PUT");
-            conn.setRequestProperty("Content-type", "application/json");
+            conn.setRequestMethod("PUT"); // REST API 방식
+            conn.setRequestProperty("Content-type", "application/json"); // payload 형식
             conn.setDoInput(true);
             conn.setDoOutput(true);
 
             OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
+            BufferedWriter writer = new BufferedWriter( // put 이기 때문에 BufferedWriter 객체로 <-> Get일경우 받아야되니까 BufferReader
+                    new OutputStreamWriter(os, "UTF-8")); // (스트림, 인코딩) -> 문자 스트림에서 바이트 스트림으로 변환해줌.
             String str = postDataParams[0].toString();
             Log.e("params", "Post String = " + str);
-            writer.write(str);
+            writer.write(str); // 버퍼에 쓰기
 
             writer.flush();
             writer.close();

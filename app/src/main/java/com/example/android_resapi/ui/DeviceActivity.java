@@ -166,7 +166,7 @@ public class DeviceActivity extends AppCompatActivity {
         Intent intent = getIntent();
         urlStr = intent.getStringExtra("thingShadowURL");
 
-        startGetBtn = findViewById(R.id.startGetBtn);
+        startGetBtn = findViewById(R.id.startGetBtn); // 조회 시작
         startGetBtn.setEnabled(true);
         startGetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
