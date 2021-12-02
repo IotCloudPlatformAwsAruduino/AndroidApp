@@ -1,102 +1,113 @@
-## REST API 기반 안드로이드 앱 샘플
-- **Anroid-RestAPI** 안드로이드 프로젝트는 **Amazon API Gateway**를 통해서 게시된 REST API를 활용하여 **IoT 벡엔드**와 상호작용하는 안드로이드 앱 샘플입니다. 안드로이드 앱의 주요 기능은 다음과 같습니다.
-	- 디바이스 목록 조회 
-	- 디바이스 상태 조회/변경
-	- 디바이스 로그 조회
-- **IoT 백엔드**는 AWS의 다양한 서비스(AWS IoT Core, AWS Lambda, Amazon DyanmoDB, Amazon SNS, Amazon API Gateway)를 이용해 구축된 IoT 클라우드 플랫폼입니다.
-	- **AWS IoT Device gateway**를 통해서 연결된 **아두이노 디바이스**(**MKRWiFi1010**)로부터 주기적으로 매 5초마다 디바이스 정보(현재 온도 및 LED 상태)를 수신하고, MQTT 프로토콜을 이용하여 **Device shadow** 혹은 **IoT rule** 컴포넌트와 상호작용합니다.
-		- **Device shadow**는 **Device gateway**를 통해 게시된 주제에 따라 디바이스 상태정보를 업데이트하거나 현재 상태정보를 게시합니다.
-		- **IoT rule**은 등록된 주제(update/documents)의 메시지가 수신될 때마다 **AWS Lambda** 함수를 통해서 수신된 메시지를 **Amazon DynamoDB**에 저장하거나, 수신된 메시지를 분석하여 특정 조건이 만족되면 경고 메시지를 **Amazon SNS**의 주제에 게시하여 해당 주제에 등록된 이메일 계정으로 경고 메시지가 전달되게 한다.
-	- **Amazon API Gateway**는 **AWS Lambda**함수를 통해서 다음 기능을 수행하는 두 가지 REST API를 게시한다.
-		- AWS IoT Core에 등록된 디바이스 목록을 조회하는 REST API
-		- 디바이스의 정보를 변경하거나 조회하는 REST API
-		- 디바이스의 로그 정보를 조회하는 REST API
 
-![](figures/architecture.png)
+#💡스마트 에어컨시스템 
 
-### 1. REST API 설계
-- 다음 프로그램 코드를 실행시키기 위해서는 다음 형식의 **REST API**가 준비되어 있어야 합니다.
-	- 디바이스 목록 조회
-		
-		```
-		GET /devices
-		```
-	
-	- 디바이스 상태 조회
+**[💦]**  
+1인가구 주거공간의 여름철 온습도를 IoT 기기와 AWS 서비스를 이용한 IoT 클라우드 플랫폼을 구축하여 자동으로 제어하는 시스템 구축
 
-		```	
-		GET /devices/{deviceId}
-		```
-	- 디바이스 상태 변경
+___
+## 적용된 AWS 서비스 
+  <li>AWS IoT Core</li>
+  <li>AWS Lambda</li>
+  <li>Amazon DyanmoDB</li>
+  <li>Amazon API Gateway</li>
+  
+## HW 구성
+  <li>MKRWiFi1010 보드</li>
+  <li>SG90 서보모터</li>
+  <li>DHT11 온도 습도 센서</li>
+  <li>TEMT6000 조도센서</li>
+  ( 나중에 여기에 이미지 추가)
+  
+___ 
 
-		```	
-		PUT /devices/{deviceId}
-		```
-		
-		- message body (payload)
-		
-			```json
-			{ 
-				"tags" : [
-					{
-						"attrName": "temperature",
-						"attrValue": "27.0"
-					},
-					{
-						"attrName": "LED",
-						"attrValue": "OFF"
-					}
-				]
-			}
+## 서비스 구성도
+![image](https://user-images.githubusercontent.com/72599051/143241035-e962d196-8519-418c-a038-5cf6dc6108d7.png)
+___ 
 
-	
-	- 디바이스 로그 조회	
 
-		```		
-		GET /devices/{deviceId}/log?from=yyyy-mm-dd hh:mm:ss&to=yyyy-mm-dd hh:mm:ss
-		```
-		
-### 2. AWS IoT 백엔드 구축
+1. REST API 설계
+다음 프로그램 코드를 실행시키기 위해서는 다음 형식의 REST API가 준비되어 있어야 합니다.
+- 디바이스 로그 조회 
+```
+ GET /devices/{deviceId}/log?from=yyyy-mm-dd hh:mm:ss&to=yyyy-mm-dd hh:mm:ss
+```
+- 디바이스 상태 조회 : 온습도 , 에어컨 상태 확인(ON/OFF)
+```
+GET /devices/{deviceId}
+```
+- 디바이스 상태 변경 : 에어컨 ON/OFF
+```
+ PUT /devices/{deviceId}
+```
+  <li>message body (payload)</li>
+  ```
+  { 
+ 	"tags" : [
+ 		{
+ 			"attrName": "temperature",
+ 			"attrValue": "27.0"
+ 		},
+ 		{
+ 			"attrName": "LED",
+ 			"attrValue": "OFF"
+ 		}
+ 	]
+ }
+```
 
-다음 방법을 통해서 다음 IoT 백엔드를 구축한다.
+### Prerequisites / 선행 조건
 
-1. [AWS IoT와 아두이노 연결하기](https://kwanulee.github.io/IoTPlatform/start-aws-iot.html#2)
-2. [디바이스 상태에 따라 경고 이메일을 전송하는 IoT 백엔드 구축](https://kwanulee.github.io/IoTPlatform/serverless.html#3)
-3. [디바이스 데이터 저장 IoT 백엔드 구축](https://kwanulee.github.io/IoTPlatform/dynamodb.html#4)
-4. [디바이스 목록 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.1.html)
-5. [디바이스 상태 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.2.html)
-6. [디바이스 상태 변경 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.3.html)
-7. [디바이스 로그 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.4.html)
+아래 사항들이 설치가 되어있어야합니다.
 
-### 3. Android 앱 설치 및 실행
-- 설치 방법
-	- **Clone or download** 를 클릭 후, Download ZIP을 통해 프로젝트 zip파일을 다운 받아서 압축을 푼 후에, AndroidStudio를 통해 실행 시킵니다.
+```
+예시
+```
 
-		![](figures/install.png)
+### Installing / 설치
 
-- 초기 실행 화면
+아래 사항들로 현 프로젝트에 관한 모듈들을 설치할 수 있습니다.
 
-	![](figures/screenshot1.png)
+```
+예시
+```
 
-- 아래 세가지 버튼을 클릭하기 전에 API URI를 입력해야 합니다.
-	- Amazon API Gateway로 부터 만들어진  API 서버 URL을 기록해 둔다. 
-		
-		```
-		https://xxxxxxxx.execute-api.ap-northeast-2.amazonaws.com/prod 
-		```
-	- 사물목록 조회 API URI
-		
-		```
-		https://xxxxxxxx.execute-api.ap-northeast-2.amazonaws.com/prod/devices
-		```
-	
-	- 사물상태 조회/변경 API URI
+## Running the tests / 테스트의 실행
 
-		```
-		https://xxxxxxxx.execute-api.ap-northeast-2.amazonaws.com/prod/devices/{devices_name}
-		```
-	- 사물로그 조회 API URI
+어떻게 테스트가 이 시스템에서 돌아가는지에 대한 설명을 합니다
 
-		```
-		https://xxxxxxxx.execute-api.ap-northeast-2.amazonaws.com/prod/devices/{devices_name}/log
-		```	
+### 테스트는 이런 식으로 동작합니다
+
+왜 이렇게 동작하는지, 설명합니다
+
+```
+예시
+```
+
+### 테스트는 이런 식으로 작성하시면 됩니다
+
+```
+예시
+```
+
+## Deployment / 배포
+
+Add additional notes about how to deploy this on a live system / 라이브 시스템을 배포하는 방법
+
+## Built With / 누구랑 만들었나요?
+
+* [1791320_최종현](https://github.com/TonyJHC) - 작업 내용
+* [1771391 유지만](https://github.com/jiman-you) - 작업 내용 
+
+## Contributiong / 기여
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us. / [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) 를 읽고 이에 맞추어 pull request 를 해주세요.
+
+## License / 라이센스
+
+This project is licensed under the MIT License - see the [LICENSE.md](https://gist.github.com/PurpleBooth/LICENSE.md) file for details / 이 프로젝트는 MIT 라이센스로 라이센스가 부여되어 있습니다. 자세한 내용은 LICENSE.md 파일을 참고하세요.
+
+## Acknowledgments / 감사의 말
+
+* Hat tip to anyone whose code was used / 코드를 사용한 모든 사용자들에게 팁
+* Inspiration / 영감
+* etc / 기타
