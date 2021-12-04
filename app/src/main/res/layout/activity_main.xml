@@ -35,7 +35,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="234dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="온습도 조회 API"
             android:textColor="@color/colorPrimaryDark"
@@ -45,7 +45,7 @@
             android:id="@+id/thingShadowBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="사물상태 조회/변경" />
+            android:text="온습도 조회/변경" />
 
     </LinearLayout>
 
@@ -60,9 +60,9 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="285dp"
+            android:layout_width="264dp"
             android:layout_height="52dp"
-            android:text="사물로그 조회 API"
+            android:text="온습도로그 조회 API"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20dp" />
 
@@ -70,7 +70,7 @@
             android:id="@+id/listLogsBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="로그 조회" />
+            android:text="사물로그 조회" />
 
     </LinearLayout>
 
