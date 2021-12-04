@@ -274,11 +274,6 @@ public class DeviceActivity extends AppCompatActivity {
         TextView reported_tempTV = findViewById(R.id.reported_temp);
         reported_tempTV.setText("");
         reported_ledTV.setText("");
-
-        TextView desired_ledTV = findViewById(R.id.desired_led);
-        TextView desired_tempTV = findViewById(R.id.desired_temp);
-        desired_tempTV.setText("");
-        desired_ledTV.setText("");
     }
 
 }
