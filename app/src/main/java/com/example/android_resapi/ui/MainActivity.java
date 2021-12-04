@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         listLogsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String urlstr = "https://xd2ty7pbh0.execute-api.ap-northeast-2.amazonaws.com/prod/devices/MyMKRWiFi1010"; // getLogsURL.getText().toString();
+                String urlstr = "https://xd2ty7pbh0.execute-api.ap-northeast-2.amazonaws.com/prod/devices/DeviceData/log"; // getLogsURL.getText().toString();
                 if (urlstr == null || urlstr.equals("")) {
                     Toast.makeText(MainActivity.this, "사물로그 조회 API URI 입력이 필요합니다.", Toast.LENGTH_SHORT).show();
                     return;
