@@ -42,13 +42,6 @@
                 android:text="최신 상태 (reported)"
                 android:textColor="#FFEB3B"
                 android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="최신 상태 (desired)"
-                android:textColor="#FFEB3B"
-                android:textStyle="bold" />
         </TableRow>
 
         <TableRow>
@@ -70,22 +63,6 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/temp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/desired_temp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
         </TableRow>
 
         <TableRow>
@@ -108,24 +85,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="스마트시스템 상태 :"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/desired_led"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-
         </TableRow>
         <TableRow>
 
@@ -147,24 +106,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="습도"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/desired_humid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-
         </TableRow>
         <TableRow>
 
@@ -185,24 +126,6 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="에어컨상태:"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/desired_air"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
 
         </TableRow>
     </TableLayout>
