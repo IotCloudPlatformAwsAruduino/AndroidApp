@@ -13,10 +13,12 @@ ___
   
 ## HW 구성
   <li>MKRWiFi1010 보드</li>
-  <li>SG90 서보모터</li>
-  <li>DHT11 온도 습도 센서</li>
-  <li>TEMT6000 조도센서</li>
-  ( 나중에 여기에 이미지 추가)
+  <li>SG90 서보모터 : D3 </li>
+  <li>DHT11 온도 습도 센서 : D2</li>
+  <li>TEMT6000 조도센서 : A1</li>
+  
+  ![image](https://user-images.githubusercontent.com/72599051/144745942-1e4392ea-9d46-4c16-b18a-196ae228a6a1.png)
+
   
 ___ 
 
