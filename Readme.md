@@ -59,48 +59,84 @@ GET /devices/{deviceId}
 
 ### Prerequisites / 선행 조건
 
-아래 사항들이 설치가 되어있어야합니다.
 
 ```
-예시
+- Arduino IDE 
+- Android Mobile Phone or Android Studio IDE + Emulater
+- AWS Account 
+
+참고사항 : 
+- AWS IoT 와 MKRWiFi1010 연결방법 : https://kwanulee.github.io/AWS_IoT_DHT11/
+- 디바이스 섀도우 사용법 : https://kwanulee.github.io/AWS_IoT_DHT11/device-shadows.html
+- AWS IoT 사용법 : https://kwanulee.github.io/AWS_IoT_DHT11/
+- API Gateway 사용법 : https://kwanulee.github.io/APIGatewayPractice/
+
 ```
 
-### Installing / 설치
-
-아래 사항들로 현 프로젝트에 관한 모듈들을 설치할 수 있습니다.
-
-```
-예시
-```
 
 ## Running the tests / 테스트의 실행
 
-어떻게 테스트가 이 시스템에서 돌아가는지에 대한 설명을 합니다
+( 선행조건이 만족되었다고 가정 )
+1. 센서 및 모터가 연결된 MKRWiFi1010 보드에 전원을 공급.
+2. 안드로이드 App을 다운로드 혹은 에뮬레이터로 실행.
+3. 안드로이드 App에 표현된 사물의 상태를 확인 및 제어.
+
 
 ### 테스트는 이런 식으로 동작합니다
 
-왜 이렇게 동작하는지, 설명합니다
-
 ```
-예시
+적정 온도 및 습도를 벗어나면 스마트시스템 상태가 ON 일 경우에 적정온도 및 습도를 유지하기 위해 에어컨 및 제습기를 제어가능.
 ```
 
-### 테스트는 이런 식으로 작성하시면 됩니다
 
-```
-예시
-```
-
-## Deployment / 배포
-
-Add additional notes about how to deploy this on a live system / 라이브 시스템을 배포하는 방법
 
 ## Built With / 누구랑 만들었나요?
 
-* [1791320_최종현](https://github.com/TonyJHC) - 작업 내용
-* [1771391 유지만](https://github.com/jiman-you) - 작업 내용 
+* [1791320_최종현](https://github.com/TonyJHC) 
+   1. 안드로이드 APP 개발 ​
+
+      -  온습도 , 에어컨 상태 확인  (완료)​
+
+      -  스마트 에어컨 시스템 제어 (완료)​
+     
+
+   2.  AWS IoT 클라우드 플랫폼 구축​
+
+      - GET : 온습도 , 에어컨 상태 확인   (완료)​
+
+      - PUT : 스마트 에어컨 시스템 제어  (완료)​
+
+      - Dynamodb table에 저장 (완료)​
+      
+
+   3. 아두이노 HW/SW 개발 ​
+
+      - 온습도 , LED, 조도센서 , 서보모터 연결 및 기본설정(완료)​
+
+      - APP 에서 스마트 에어컨 시스템 작동 시 사물의 상태에 따라 에어컨 ON/OFF (완료)​
+
+
+   4.  ppt 제작 및 github 관리 및 read.me 작성​
+
+
+* [1771391 유지만](https://github.com/jiman-you) - 작업 내용
+
+   1. 안드로이드 APP 개발​
+
+      -  로그조회 화면 연동​
+
+   2.  AWS IoT 클라우드 플랫폼 구축​
+
+      - 로그조회 화면 연동​
+
+      - SNS이메일 연동​
+
+   3. 시연 동영상 촬영​
+      https://youtu.be/_r9dTBWbfAU​
+      
 
 ## Contributiong / 기여
+
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us. / [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) 를 읽고 이에 맞추어 pull request 를 해주세요.
 
