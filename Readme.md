@@ -95,25 +95,25 @@ GET /devices/{deviceId}
 * [1791320_최종현](https://github.com/TonyJHC) 
    1. 안드로이드 APP 개발 ​
 
-      -  온습도 , 에어컨 상태 확인  (완료)​
+       -  온습도 , 에어컨 상태 확인  (완료)​
 
-      -  스마트 에어컨 시스템 제어 (완료)​
+       -  스마트 에어컨 시스템 제어 (완료)​
      
 
    2.  AWS IoT 클라우드 플랫폼 구축​
 
-      - GET : 온습도 , 에어컨 상태 확인   (완료)​
+       - GET : 온습도 , 에어컨 상태 확인   (완료)​
 
-      - PUT : 스마트 에어컨 시스템 제어  (완료)​
+       - PUT : 스마트 에어컨 시스템 제어  (완료)​
 
-      - Dynamodb table에 저장 (완료)​
+       - Dynamodb table에 저장 (완료)​
       
 
    3. 아두이노 HW/SW 개발 ​
 
-      - 온습도 , LED, 조도센서 , 서보모터 연결 및 기본설정(완료)​
+       - 온습도 , LED, 조도센서 , 서보모터 연결 및 기본설정(완료)​
 
-      - APP 에서 스마트 에어컨 시스템 작동 시 사물의 상태에 따라 에어컨 ON/OFF (완료)​
+       - APP 에서 스마트 에어컨 시스템 작동 시 사물의 상태에 따라 에어컨 ON/OFF (완료)​
 
 
    4.  ppt 제작 및 github 관리 및 read.me 작성​
@@ -127,15 +127,39 @@ GET /devices/{deviceId}
 
    2.  AWS IoT 클라우드 플랫폼 구축​
 
-      - 로그조회 화면 연동​
+       - 로그조회 화면 연동​
 
-      - SNS이메일 연동​
+       - SNS이메일 연동​
 
    3. 시연 동영상 촬영​
       https://youtu.be/_r9dTBWbfAU​
       
 
 ## Contributiong / 기여
+   1. 안드로이드 APP 개발 ​
+
+         -  [1791320 최종현] 
+          ![image](https://user-images.githubusercontent.com/72599051/144746667-1cea9f8b-58c2-488d-af4f-c07ceacb5639.png)
+
+
+         -  [1771391 유지만] 
+          ![image](https://user-images.githubusercontent.com/72599051/144746687-d5807104-000e-490c-95b6-171c6c920afb.png)
+
+
+   2.  AWS IoT 클라우드 플랫폼 구축​
+
+         -  [1791320 최종현] 
+          ![image](https://user-images.githubusercontent.com/72599051/144746754-36df46a4-048d-4c19-b56d-1b2648dbde3f.png)
+
+      
+         -  [1771391 유지만] 
+          ![image](https://user-images.githubusercontent.com/72599051/144746766-fc33e95a-3b14-4a52-83c2-4ca500f05f04.png) 
+
+
+   3. 아두이노 HW/SW 개발 ​
+
+         -  [1791320 최종현] 
+          ![image](https://user-images.githubusercontent.com/72599051/144746722-feed2e11-ab9b-4882-a2e0-555576392a09.png)
 
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us. / [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) 를 읽고 이에 맞추어 pull request 를 해주세요.
@@ -144,8 +168,3 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://gist.github.com/PurpleBooth/LICENSE.md) file for details / 이 프로젝트는 MIT 라이센스로 라이센스가 부여되어 있습니다. 자세한 내용은 LICENSE.md 파일을 참고하세요.
 
-## Acknowledgments / 감사의 말
-
-* Hat tip to anyone whose code was used / 코드를 사용한 모든 사용자들에게 팁
-* Inspiration / 영감
-* etc / 기타
