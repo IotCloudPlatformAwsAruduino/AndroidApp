@@ -140,32 +140,32 @@ GET /devices/{deviceId}
 
          -  [1791320 최종현] 
 
-          ![image](https://user-images.githubusercontent.com/72599051/144746833-3f8a75c0-0d32-4cd3-aa9d-660eb0970a34.png)   
+         ![image](https://user-images.githubusercontent.com/72599051/144746833-3f8a75c0-0d32-4cd3-aa9d-660eb0970a34.png)   
 
 
 
          -  [1771391 유지만] 
           
-           ![image](https://user-images.githubusercontent.com/72599051/144746687-d5807104-000e-490c-95b6-171c6c920afb.png)
+         ![image](https://user-images.githubusercontent.com/72599051/144746687-d5807104-000e-490c-95b6-171c6c920afb.png)
 
 
    2.  AWS IoT 클라우드 플랫폼 구축​
 
          -  [1791320 최종현] 
         
-           ![image](https://user-images.githubusercontent.com/72599051/144746754-36df46a4-048d-4c19-b56d-1b2648dbde3f.png)
+          ![image](https://user-images.githubusercontent.com/72599051/144746754-36df46a4-048d-4c19-b56d-1b2648dbde3f.png)
   
       
          -  [1771391 유지만] 
          
-           ![image](https://user-images.githubusercontent.com/72599051/144746766-fc33e95a-3b14-4a52-83c2-4ca500f05f04.png) 
+          ![image](https://user-images.githubusercontent.com/72599051/144746766-fc33e95a-3b14-4a52-83c2-4ca500f05f04.png) 
 
 
    3. 아두이노 HW/SW 개발 ​
 
          -  [1791320 최종현] 
          
-           ![image](https://user-images.githubusercontent.com/72599051/144746722-feed2e11-ab9b-4882-a2e0-555576392a09.png)
+         ![image](https://user-images.githubusercontent.com/72599051/144746722-feed2e11-ab9b-4882-a2e0-555576392a09.png)
 
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us. / [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) 를 읽고 이에 맞추어 pull request 를 해주세요.
