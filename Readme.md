@@ -23,11 +23,21 @@ ___
 ___ 
 
 ## 서비스 구성도
+API Gateway를 통해 API를 호출하여  안드로이드 app상에서 사물의 상태를 확인 및 수정을 할 수 있습니다. 
+또한 Dynamodb에 저장하여 사물의 로그를 조회하거나 나아가서 분석할 수 있는 데이터로 사용이 가능해 집니다.
+아래와같은 다양한 AWS의 서비스들을 이용하여 사물을 좀 더 편리하고 쉽게 다룰 수 있게 됩니다.
 ![image](https://user-images.githubusercontent.com/72599051/143241035-e962d196-8519-418c-a038-5cf6dc6108d7.png)
+
+___ 
+
+## 안드로이드 APP 화면 예시 
+센서에 의해 측정된 값들은 AWS상의 mqtt 클라이언트에 의해 구독되어져서 구축해둔 REST API 를 통해 사용자가 APP상에서 확인 및 사물의 상태를 제어할 수 있습니다.
+![image](https://user-images.githubusercontent.com/72599051/144988777-40561d91-c9ee-4e11-b669-2ac964e43a50.png)
+
 ___ 
 
 
-1. REST API 설계
+## 1. REST API 설계
 다음 프로그램 코드를 실행시키기 위해서는 다음 형식의 REST API가 준비되어 있어야 합니다.
 - 디바이스 로그 조회 
 ```
@@ -87,6 +97,12 @@ GET /devices/{deviceId}
 ```
 적정 온도 및 습도를 벗어나면 스마트시스템 상태가 ON 일 경우에 적정온도 및 습도를 유지하기 위해 에어컨 및 제습기를 제어가능.
 ```
+___ 
+
+## 아두이노 코드 핵심 flow  
+![image](https://user-images.githubusercontent.com/72599051/144989300-7d5f013e-73c2-4334-b0f4-92b863ca6a8a.png)
+
+___ 
 
 
 
